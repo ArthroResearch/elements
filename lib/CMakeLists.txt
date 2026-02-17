@@ -57,12 +57,8 @@ set(ELEMENTS_SOURCES
    src/support/rect.cpp
    src/support/text_utils.cpp
    src/support/resource_paths.cpp
-   src/support/text_utils.cpp
    src/support/theme.cpp
    src/support/payload.cpp
-   src/support/receiver.cpp
-   src/support/text_utils.cpp
-   src/support/theme.cpp
    src/view.cpp
 )
 
@@ -275,7 +271,7 @@ endif()
 FetchContent_Declare(
   asio
   GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
-  GIT_TAG asio-1-29-0
+  GIT_TAG asio-1-36-0
   GIT_SHALLOW TRUE
 )
 FetchContent_MakeAvailable(asio)
