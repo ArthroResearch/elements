@@ -34,6 +34,16 @@ namespace elements = cycfi::elements;
    [super zoom : sender];
 }
 
+- (BOOL) windowShouldClose:(NSWindow *)sender
+{
+   if (_pwin && _pwin->on_pre_close)
+   {
+      if (!_pwin->on_pre_close())
+         return NO;
+   }
+   return YES;
+}
+
 - (void) close
 {
    [super close];

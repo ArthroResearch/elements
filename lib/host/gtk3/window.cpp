@@ -56,6 +56,20 @@ namespace cycfi::elements
             gtk_window_set_title(GTK_WINDOW(win), name.c_str());
             _window->host = win;
 
+            g_signal_connect(win, "delete-event", G_CALLBACK(+[](GtkWidget* /*widget*/, GdkEvent* /*event*/, gpointer user_data) -> gboolean {
+               auto* self = static_cast<window*>(user_data);
+
+               if (self->on_pre_close) {
+                  if (!self->on_pre_close())
+                     return TRUE;
+               }
+
+               if (self->on_close)
+                  self->on_close();
+
+               return FALSE;
+            }), this);
+
             for (auto f : _window->on_activate)
                f();
 
