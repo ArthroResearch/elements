@@ -62,8 +62,16 @@ namespace cycfi::elements
          SetWindowPos(hwnd, nullptr, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
       }
 
-      LRESULT on_close(window* win)
+      LRESULT on_close(window* win, HWND hwnd)
       {
+         if (win && win->on_pre_close)
+         {
+            if (!win->on_pre_close())
+               return 0;
+         }
+
+         ShowWindow(hwnd, SW_HIDE);
+
          if (win && win->on_close)
             win->on_close();
          return 0;
@@ -126,8 +134,7 @@ namespace cycfi::elements
          switch (message)
          {
             case WM_CLOSE:
-               ShowWindow(hwnd, SW_HIDE);
-               return on_close(info->wptr);
+               return on_close(info->wptr, hwnd);
 
             case WM_DPICHANGED:
             case WM_SIZE:
