@@ -62,8 +62,10 @@ namespace cycfi::elements
       /////////////////////////////////////////////////////////////////////////
       // Notifications
       using callback_fn = std::function<void()>;
+      using close_validation_fn = std::function<bool()>;
 
       callback_fn          on_close;
+      close_validation_fn  on_pre_close;
 
    private:
 
