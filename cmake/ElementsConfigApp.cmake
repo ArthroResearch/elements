@@ -4,6 +4,7 @@
 #  Distributed under the MIT License (https://opensource.org/licenses/MIT)
 ###############################################################################
 
+cmake_policy(SET CMP0091 NEW)
 project(${ELEMENTS_APP_PROJECT} LANGUAGES CXX)
 
 ###############################################################################
