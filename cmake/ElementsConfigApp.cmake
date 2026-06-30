@@ -99,7 +99,6 @@ elseif (WIN32)
    )
 
    if (MSVC)
-      set_property(TARGET ${ELEMENTS_APP_PROJECT} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
       #      if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
 #         set_property(TARGET ${ELEMENTS_APP_PROJECT} PROPERTY

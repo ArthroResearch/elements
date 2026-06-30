@@ -295,7 +295,7 @@ elseif (WIN32)
       BOOST_REGEX_NO_LIB
    )
 
-   set_property(TARGET elements PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+   # Use CMAKE_MSVC_RUNTIME_LIBRARY from root
 
    #   if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
 #      set_property(TARGET elements PROPERTY
